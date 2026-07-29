@@ -12,9 +12,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '8.0.x'
       - name: Install Inno Setup
         run: choco install innosetup --yes --no-progress
       - name: Build installer
@@ -24,5 +21,4 @@ jobs:
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create $env:GITHUB_REF_NAME installer-output/OpenCodexQuotaWidget-Setup-x64.exe --generate-notes --title "Open Codex Quota Widget $env:GITHUB_REF_NAME"
-
+        run: gh release create $env:GITHUB_REF_NAME installer-output/CodexQuotaWidget-Setup-x64.exe --generate-notes --title "Codex 额度悬浮窗 $env:GITHUB_REF_NAME"
