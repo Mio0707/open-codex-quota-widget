@@ -1,5 +1,4 @@
 using System.Windows;
-using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace OpenCodexQuotaWidget;
@@ -40,10 +39,5 @@ public partial class MainWindow : Window
 
     private void CloseButton_Click(object sender, RoutedEventArgs e) => Close();
 
-    protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
-    {
-        if (e.ButtonState == MouseButtonState.Pressed) DragMove();
-        base.OnMouseLeftButtonDown(e);
-    }
 }
 
