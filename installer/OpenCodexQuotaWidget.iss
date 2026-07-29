@@ -1,5 +1,5 @@
 #define AppName "Codex 额度悬浮窗"
-#define AppVersion "1.1.0"
+#define AppVersion "1.1.1"
 #define AppExeName "CodexQuotaWidget.exe"
 
 [Setup]
