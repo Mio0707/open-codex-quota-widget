@@ -1,23 +1,32 @@
-#define AppName "Open Codex Quota Widget"
-#define AppVersion "1.0.2"
-#define AppExeName "OpenCodexQuotaWidget.exe"
+#define AppName "Codex 额度悬浮窗"
+#define AppVersion "1.1.0"
+#define AppExeName "CodexQuotaWidget.exe"
 
 [Setup]
 AppId={{B1E74B73-343A-4F52-8CC7-3068AA50F2B0}
 AppName={#AppName}
 AppVersion={#AppVersion}
-DefaultDirName={localappdata}\Programs\{#AppName}
+DefaultDirName={localappdata}\Programs\Open Codex Quota Widget
 DefaultGroupName={#AppName}
 DisableProgramGroupPage=yes
 PrivilegesRequired=lowest
+ArchitecturesAllowed=x64compatible
+ArchitecturesInstallIn64BitMode=x64compatible
 OutputDir=..\installer-output
-OutputBaseFilename=OpenCodexQuotaWidget-Setup-x64
+OutputBaseFilename=CodexQuotaWidget-Setup-x64
 Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern
+CloseApplications=yes
+RestartApplications=no
+UninstallDisplayIcon={app}\{#AppExeName}
+
+[InstallDelete]
+Type: files; Name: "{app}\OpenCodexQuotaWidget.exe"
+Type: filesandordirs; Name: "{localappdata}\Temp\.net\CodexQuotaWidget"
 
 [Files]
-Source: "..\publish\win-x64\{#AppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\assets\app\{#AppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 
 [Tasks]
 Name: "desktopicon"; Description: "创建桌面快捷方式"; GroupDescription: "快捷方式："; Flags: checkedonce
@@ -27,5 +36,4 @@ Name: "{autoprograms}\{#AppName}"; Filename: "{app}\{#AppExeName}"
 Name: "{autodesktop}\{#AppName}"; Filename: "{app}\{#AppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\{#AppExeName}"; Description: "立即打开额度浮窗"; Flags: nowait postinstall skipifsilent
-
+Filename: "{app}\{#AppExeName}"; Description: "立即打开 Codex 额度悬浮窗"; Flags: nowait postinstall skipifsilent
