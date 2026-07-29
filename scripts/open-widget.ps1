@@ -1,21 +1,15 @@
 $ErrorActionPreference = 'Stop'
 
-if (-not $IsWindows -and $PSVersionTable.PSEdition -eq 'Core') {
-    throw 'This Codex quota widget is available only on Windows.'
-}
-
-$skillRoot = Split-Path -Parent $PSScriptRoot
-$widgetPath = Join-Path $skillRoot 'assets\app\CodexQuotaWidget.exe'
-
+$widgetPath = Join-Path $env:LOCALAPPDATA 'Programs\Open Codex Quota Widget\OpenCodexQuotaWidget.exe'
 if (-not (Test-Path -LiteralPath $widgetPath)) {
-    throw "Widget executable not found: $widgetPath"
+    throw '未找到已安装的额度浮窗。请从仓库 Releases 下载并安装 OpenCodexQuotaWidget-Setup-x64.exe。'
 }
 
-$running = Get-Process -Name 'CodexQuotaWidget' -ErrorAction SilentlyContinue
-if ($running) {
+if (Get-Process -Name 'OpenCodexQuotaWidget' -ErrorAction SilentlyContinue) {
     Write-Output 'Codex quota widget is already running.'
     exit 0
 }
 
-Start-Process -FilePath $widgetPath -WindowStyle Normal
+Start-Process -FilePath $widgetPath -WorkingDirectory (Split-Path -Parent $widgetPath)
 Write-Output 'Codex quota widget opened.'
+
