@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Window x:Class="CodexQuotaIsland.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:codexquotaisland="clr-namespace:CodexQuotaIsland;assembly=Codex额度悬浮窗" Title="Codex Pulse" Width="176" Height="386" MinWidth="120" MinHeight="80" MaxWidth="1400" MaxHeight="1000" WindowStyle="None" AllowsTransparency="True" Background="#00FFFFFF" ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True" Loaded="Window_Loaded" MouseLeftButtonDown="Window_MouseLeftButtonDown" MouseWheel="Window_MouseWheel">
+  <FrameworkElement.Resources>
+    <ResourceDictionary>
+      <Style x:Key="IconButton" TargetType="{x:Type Button}">
+        <Setter Property="Width" Value="27" />
+        <Setter Property="Height" Value="27" />
+        <Setter Property="Margin" Value="5,0,0,0" />
+        <Setter Property="Foreground" Value="{DynamicResource ControlForegroundBrush}" />
+        <Setter Property="Background" Value="#00FFFFFF" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FontFamily" Value="Segoe UI Symbol" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FrameworkElement.Cursor" Value="Hand" />
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type Button}">
+              <Border Name="Surface" Background="{TemplateBinding Control.Background}" CornerRadius="14">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+              </Border>
+              <ControlTemplate.Triggers>
+                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                  <Setter TargetName="Surface" Value="{DynamicResource ControlHoverBrush}" Property="Border.Background" />
+                  <Setter Value="{DynamicResource PrimaryTextBrush}" Property="Foreground" />
+                </Trigger>
+              </ControlTemplate.Triggers>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Style>
+      <Style x:Key="ResizeThumb" TargetType="{x:Type Thumb}">
+        <Setter Property="Background" Value="#00FFFFFF" />
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type Thumb}">
+              <Border Background="#00FFFFFF" />
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Style>
+    </ResourceDictionary>
+  </FrameworkElement.Resources>
+  <Grid>
+    <Border Name="WindowSurface" CornerRadius="28" Background="{DynamicResource WindowBackgroundBrush}" BorderBrush="{DynamicResource WindowBorderBrush}" BorderThickness="1">
+      <Viewbox Stretch="Uniform">
+        <Grid Name="DesignSurface" Width="176" Height="386">
+          <ContentControl Name="SkinHost" />
+          <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,20,0">
+            <Button Name="ThemeButton" Content="◐" Style="{StaticResource IconButton}" ToolTip="背景模式" Click="ThemeButton_Click">
+              <FrameworkElement.ContextMenu>
+                <ContextMenu Name="ThemeMenu">
+                  <MenuItem Header="黑色背景" Tag="dark" Click="ThemeMenuItem_Click" />
+                  <MenuItem Header="白色背景" Tag="light" Click="ThemeMenuItem_Click" />
+                </ContextMenu>
+              </FrameworkElement.ContextMenu>
+            </Button>
+            <Button Name="SkinButton" Content="◈" Style="{StaticResource IconButton}" ToolTip="选择皮肤" Click="SkinButton_Click">
+              <FrameworkElement.ContextMenu>
+                <ContextMenu Name="SkinMenu">
+                  <MenuItem Header="燃香" Tag="incense" Click="SkinMenuItem_Click" />
+                  <MenuItem Header="垂钓" Tag="fishing" Click="SkinMenuItem_Click" />
+                  <MenuItem Header="生生滚毛线" Tag="cat-yarn" Click="SkinMenuItem_Click" />
+                  <MenuItem Header="浮游猫·音乐联动" Tag="plankton-cat" Click="SkinMenuItem_Click" />
+                  <MenuItem Header="夜光冲浪·音乐联动" Tag="neon-surf" Click="SkinMenuItem_Click" />
+                  <MenuItem Header="抱石" Tag="bouldering" Click="SkinMenuItem_Click" />
+                  <MenuItem Header="极简条" Tag="minimal" Click="SkinMenuItem_Click" />
+                </ContextMenu>
+              </FrameworkElement.ContextMenu>
+            </Button>
+            <Button Name="RefreshButton" Content="↻" Style="{StaticResource IconButton}" ToolTip="更新" Click="RefreshButton_Click" />
+            <Button Content="×" Style="{StaticResource IconButton}" ToolTip="关闭" Click="CloseButton_Click" />
+          </StackPanel>
+        </Grid>
+      </Viewbox>
+    </Border>
+    <Thumb Style="{StaticResource ResizeThumb}" Width="8" HorizontalAlignment="Left" VerticalAlignment="Stretch" Cursor="SizeWE" DragDelta="LeftResize_DragDelta" />
+    <Thumb Style="{StaticResource ResizeThumb}" Width="8" HorizontalAlignment="Right" VerticalAlignment="Stretch" Cursor="SizeWE" DragDelta="RightResize_DragDelta" />
+    <Thumb Style="{StaticResource ResizeThumb}" Height="8" HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="SizeNS" DragDelta="TopResize_DragDelta" />
+    <Thumb Style="{StaticResource ResizeThumb}" Height="8" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Cursor="SizeNS" DragDelta="BottomResize_DragDelta" />
+    <Thumb Style="{StaticResource ResizeThumb}" Width="16" Height="16" HorizontalAlignment="Left" VerticalAlignment="Top" Cursor="SizeNWSE" DragDelta="TopLeftResize_DragDelta" />
+    <Thumb Style="{StaticResource ResizeThumb}" Width="16" Height="16" HorizontalAlignment="Right" VerticalAlignment="Top" Cursor="SizeNESW" DragDelta="TopRightResize_DragDelta" />
+    <Thumb Style="{StaticResource ResizeThumb}" Width="16" Height="16" HorizontalAlignment="Left" VerticalAlignment="Bottom" Cursor="SizeNESW" DragDelta="BottomLeftResize_DragDelta" />
+    <Thumb Style="{StaticResource ResizeThumb}" Width="16" Height="16" HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE" DragDelta="BottomRightResize_DragDelta" />
+  </Grid>
+</Window>

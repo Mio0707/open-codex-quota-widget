@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserControl x:Class="CodexQuotaIsland.Skins.BoulderingSkin" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:skins="clr-namespace:CodexQuotaIsland.Skins;assembly=Codex额度悬浮窗" Width="240" Height="420">
+  <Grid>
+    <Border Margin="1" CornerRadius="27">
+      <Border.Background>
+        <ImageBrush ImageSource="/Assets/bouldering-route.png" Stretch="UniformToFill" />
+      </Border.Background>
+      <Grid>
+        <Canvas ClipToBounds="True">
+          <Image Name="Frame100" Source="/Assets/bouldering-climber-100.png" Width="74" Height="130" Canvas.Left="78" Canvas.Top="245" Stretch="Uniform" Opacity="1" RenderOptions.BitmapScalingMode="HighQuality" />
+          <Image Name="Frame75" Source="/Assets/bouldering-climber-75.png" Width="71" Height="125" Canvas.Left="75" Canvas.Top="210" Stretch="Uniform" Opacity="0" RenderOptions.BitmapScalingMode="HighQuality" />
+          <Image Name="Frame50" Source="/Assets/bouldering-climber-50.png" Width="77" Height="135" Canvas.Left="73" Canvas.Top="120" Stretch="Uniform" Opacity="0" RenderOptions.BitmapScalingMode="HighQuality" />
+          <Image Name="Frame25" Source="/Assets/bouldering-climber-25.png" Width="86" Height="150" Canvas.Left="72" Canvas.Top="65" Stretch="Uniform" Opacity="0" RenderOptions.BitmapScalingMode="HighQuality" />
+          <Image Name="Frame0" Source="/Assets/bouldering-climber-0.png" Width="86" Height="150" Canvas.Left="76" Canvas.Top="15" Stretch="Uniform" Opacity="0" RenderOptions.BitmapScalingMode="HighQuality" />
+        </Canvas>
+        <Border Height="52" Margin="12,0,12,10" Padding="12,6" VerticalAlignment="Bottom" CornerRadius="16" Background="#B85A4333" BorderBrush="#32FFFFFF" BorderThickness="1">
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+              <TextBlock Name="PercentageText" Text="--" Foreground="#FFFDF9F3" FontFamily="Segoe UI Variable Display" FontSize="24" FontWeight="SemiBold" />
+              <TextBlock Text="%" Margin="2,5,0,0" Foreground="#DDFDF9F3" FontSize="10" />
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center">
+              <TextBlock Name="StageText" Text="准备起步" HorizontalAlignment="Right" Foreground="#FFFDF9F3" FontFamily="Microsoft YaHei UI" FontSize="9" FontWeight="SemiBold" />
+              <TextBlock Name="ResetText" Text="正在读取额度…" Margin="0,2,0,0" HorizontalAlignment="Right" TextAlignment="Right" Foreground="#DDFDF9F3" FontFamily="Microsoft YaHei UI" FontSize="8" />
+            </StackPanel>
+          </Grid>
+        </Border>
+      </Grid>
+    </Border>
+  </Grid>
+</UserControl>

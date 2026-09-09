@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application x:Class="CodexQuotaIsland.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:codexquotaisland="clr-namespace:CodexQuotaIsland;assembly=Codex额度悬浮窗">
+  <Application.Resources>
+    <ResourceDictionary>
+      <SolidColorBrush x:Key="WindowBackgroundBrush" Color="#F3121214" />
+      <SolidColorBrush x:Key="WindowBorderBrush" Color="#22FFFFFF" />
+      <SolidColorBrush x:Key="PrimaryTextBrush" Color="#F3F0EA" />
+      <SolidColorBrush x:Key="SecondaryTextBrush" Color="#8E8992" />
+      <SolidColorBrush x:Key="MutedTextBrush" Color="#77727B" />
+      <SolidColorBrush x:Key="TrackBackgroundBrush" Color="#302B33" />
+      <SolidColorBrush x:Key="ControlForegroundBrush" Color="#A9A4AD" />
+      <SolidColorBrush x:Key="ControlHoverBrush" Color="#16FFFFFF" />
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>

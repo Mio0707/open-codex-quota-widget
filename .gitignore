@@ -1,1 +1,14 @@
+app/bin/
+app/obj/
 installer-output/
+build/
+tools/
+assets/
+recovered-app/
+upstream-extracted/
+upstream-v1.1.1.tar
+audio-probe.txt
+dist/audio-probe.txt
+dist/preview-plankton.png
+preview-plankton.png
+src/

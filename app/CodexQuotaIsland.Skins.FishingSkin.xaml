@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserControl x:Class="CodexQuotaIsland.Skins.FishingSkin" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:skins="clr-namespace:CodexQuotaIsland.Skins;assembly=Codex额度悬浮窗" Width="190" Height="410">
+  <FrameworkElement.Resources>
+    <ResourceDictionary>
+      <Storyboard x:Key="WaterAnimation" RepeatBehavior="Forever">
+        <DoubleAnimation Storyboard.TargetName="FishDrift" Storyboard.TargetProperty="Y" From="-2" To="3" Duration="0:0:2.8" AutoReverse="True" />
+        <DoubleAnimation Storyboard.TargetName="FishDrift" Storyboard.TargetProperty="X" From="-1" To="2" Duration="0:0:4.1" AutoReverse="True" />
+        <DoubleAnimation Storyboard.TargetName="BubbleOne" Storyboard.TargetProperty="Opacity" From="0.08" To="0.55" Duration="0:0:2.7" AutoReverse="True" />
+        <DoubleAnimation Storyboard.TargetName="BubbleTwo" Storyboard.TargetProperty="Opacity" From="0.5" To="0.06" Duration="0:0:3.5" AutoReverse="True" />
+        <DoubleAnimation Storyboard.TargetName="FloatGlow" Storyboard.TargetProperty="Opacity" From="0.35" To="0.8" Duration="0:0:1.8" AutoReverse="True" />
+      </Storyboard>
+    </ResourceDictionary>
+  </FrameworkElement.Resources>
+  <Border Margin="8" CornerRadius="30" Background="{DynamicResource WindowBackgroundBrush}" BorderBrush="{DynamicResource WindowBorderBrush}" BorderThickness="1">
+    <Grid ClipToBounds="True">
+      <Rectangle VerticalAlignment="Bottom" Height="300">
+        <Shape.Fill>
+          <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#152F3B" Offset="0" />
+            <GradientStop Color="#102631" Offset="0.42" />
+            <GradientStop Color="#09171F" Offset="1" />
+          </LinearGradientBrush>
+        </Shape.Fill>
+      </Rectangle>
+      <Grid Margin="14,12,14,15">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="34" />
+          <RowDefinition Height="270" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Canvas Grid.Row="1" Width="160" Height="266" HorizontalAlignment="Center">
+          <Path Stroke="#315866" StrokeThickness="1" Opacity="0.7" Data="M0,34 C20,29 38,39 58,34 C79,29 98,39 119,34 C134,31 147,32 160,35" />
+          <Path Stroke="#234550" StrokeThickness="0.8" Opacity="0.55" Data="M4,46 C24,42 37,50 58,46 C82,41 100,52 123,46 C139,42 151,45 160,47" />
+          <Canvas Name="HookGroup" Width="160" Height="180">
+            <UIElement.RenderTransform>
+              <RotateTransform x:Name="HookShake" CenterX="76" CenterY="2" />
+            </UIElement.RenderTransform>
+            <Line X1="76" Y1="0" X2="76" Y2="158" Stroke="#A7B2AF" StrokeThickness="0.8" Opacity="0.72" />
+            <Ellipse Name="FloatGlow" Canvas.Left="70" Canvas.Top="29" Width="12" Height="19" Fill="#31E4A477">
+              <UIElement.Effect>
+                <BlurEffect Radius="5" />
+              </UIElement.Effect>
+            </Ellipse>
+            <Border Canvas.Left="72.5" Canvas.Top="31" Width="7" Height="16" CornerRadius="4">
+              <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                  <GradientStop Color="#E8DED1" Offset="0" />
+                  <GradientStop Color="#D96B4D" Offset="0.48" />
+                  <GradientStop Color="#943E35" Offset="1" />
+                </LinearGradientBrush>
+              </Border.Background>
+            </Border>
+            <Path Name="HookPath" Stroke="#C0C6C3" StrokeThickness="1.5" Data="M76,45 L76,146 C76,162 92,164 96,149 C97,145 96,141 94,138" StrokeStartLineCap="Round" StrokeEndLineCap="Round" />
+            <Path Name="HookTip" Fill="#C0C6C3" Data="M91,139 L97,136 L95,143" />
+          </Canvas>
+          <Ellipse Name="MilestoneRipple" Canvas.Left="75" Canvas.Top="132" Width="42" Height="25" Stroke="#88B8C0" StrokeThickness="1" Opacity="0" IsHitTestVisible="False">
+            <UIElement.RenderTransform>
+              <ScaleTransform x:Name="RippleScale" CenterX="21" CenterY="12.5" />
+            </UIElement.RenderTransform>
+          </Ellipse>
+          <Canvas Name="FishGroup" Width="80" Height="40" Left="88" Top="215">
+            <UIElement.RenderTransform>
+              <TransformGroup>
+                <RotateTransform x:Name="FishRotate" CenterX="8" CenterY="18" />
+                <RotateTransform x:Name="FishMilestoneRotate" CenterX="28" CenterY="18" />
+                <TranslateTransform x:Name="FishMilestoneMove" />
+                <TranslateTransform x:Name="FishDrift" />
+              </TransformGroup>
+            </UIElement.RenderTransform>
+            <Path Data="M10,19 C18,3 49,2 63,17 C53,33 23,36 10,22">
+              <Shape.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                  <GradientStop Color="#B3CAD0" Offset="0" />
+                  <GradientStop Color="#5F8791" Offset="0.48" />
+                  <GradientStop Color="#345862" Offset="1" />
+                </LinearGradientBrush>
+              </Shape.Fill>
+            </Path>
+            <Path Data="M60,17 L78,5 L74,30" Fill="#4B7480" />
+            <Path Data="M36,27 L50,38 L29,33" Fill="#476F79" Opacity="0.9" />
+            <Path Data="M37,7 L50,0 L55,9" Fill="#7799A1" Opacity="0.75" />
+            <Path Data="M17,10 C28,18 40,20 57,15" Stroke="#D1DEE0" StrokeThickness="0.8" Opacity="0.28" />
+            <Ellipse Canvas.Left="18" Canvas.Top="11" Width="5" Height="5" Fill="#E7E5DC" />
+            <Ellipse Canvas.Left="19.5" Canvas.Top="12.5" Width="2.2" Height="2.2" Fill="#111719" />
+            <Path Data="M9,18 C5,17 4,21 9,22" Stroke="#A7BCC0" StrokeThickness="1" />
+          </Canvas>
+          <Ellipse Name="BubbleOne" Canvas.Left="30" Canvas.Top="145" Width="5" Height="5" Stroke="#7398A2" StrokeThickness="0.8" Opacity="0.35" />
+          <Ellipse Name="BubbleTwo" Canvas.Left="132" Canvas.Top="196" Width="3" Height="3" Stroke="#7398A2" StrokeThickness="0.7" Opacity="0.25" />
+          <Ellipse Canvas.Left="42" Canvas.Top="183" Width="2" Height="2" Fill="#547985" Opacity="0.35" />
+        </Canvas>
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top">
+          <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Name="PercentageText" Text="--" Foreground="{DynamicResource PrimaryTextBrush}" FontFamily="Segoe UI Variable Display" FontSize="31" FontWeight="SemiBold" />
+            <TextBlock Text="%" Margin="2,7,0,0" Foreground="{DynamicResource SecondaryTextBrush}" FontSize="14" FontWeight="SemiBold" />
+          </StackPanel>
+          <TextBlock Name="ResetText" Text="正在读取额度…" Margin="0,3,0,0" Foreground="{DynamicResource MutedTextBrush}" FontFamily="Microsoft YaHei UI" FontSize="10" HorizontalAlignment="Center" />
+        </StackPanel>
+      </Grid>
+    </Grid>
+  </Border>
+  <FrameworkElement.Triggers>
+    <EventTrigger RoutedEvent="UserControl.Loaded">
+      <BeginStoryboard Storyboard="{StaticResource WaterAnimation}" />
+    </EventTrigger>
+  </FrameworkElement.Triggers>
+</UserControl>
